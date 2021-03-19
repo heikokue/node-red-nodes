@@ -6,7 +6,7 @@
             "port": "Port"
         },
         "placeholder": {
-            "port": "z. B. /dev/ttyUSB0 COM1"
+            "port": "z.B. /dev/ttyUSB0 COM1"
         },
         "status": {
             "connectfirst": "Verbinde mit zuerst gefundenen Board",
@@ -30,8 +30,8 @@
             }
         },
         "tip": {
-            "io": "<b>Hinweis:</b> Derselbe Pin kann nicht gleichzeitig als Ausgang und Eingang verwendet werden",
-            "conf": "<b>Tipp:</b> Zur automatischen Erkennung des seriellen Ports die Suche verwenden"
+            "io": "<b>Hinweis</b>: Derselbe Pin kann nicht gleichzeitig als Ausgang und Eingang verwendet werden",
+            "conf": "<b>Tipp</b>: Zur automatischen Erkennung des seriellen Ports die Suche verwenden"
         },
         "errors": {
             "portnotconf": "Port nicht konfiguriert",

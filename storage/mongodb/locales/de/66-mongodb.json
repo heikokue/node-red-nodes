@@ -29,7 +29,7 @@
             "connected": "Verbunden",
             "error": "Fehler"
         },
-        "tip": "<b>Tipp:</b> Wenn keine Collection vorgegeben ist, muss <code>msg.collection</code> den Collection-Namen enthalten",
+        "tip": "<b>Tipp</b>: Wenn keine Collection vorgegeben ist, muss <code>msg.collection</code> den Collection-Namen enthalten",
         "errors": {
             "nocollection": "Keine Collection angegeben",
             "missingconfig": "Fehlende MongoDB-Konfiguration"

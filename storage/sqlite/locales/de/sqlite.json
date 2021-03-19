@@ -14,7 +14,7 @@
             "readOnly": "Nur-Lesen"
         },
         "tips": {
-            "memoryDb": "<b>Hinweis:</b> Das Setzen der Datenbank auf <code>:memory:</code> erzeugt eine flüchtige (nicht-persistente) Datenbank im Speicher."
+            "memoryDb": "<b>Hinweis</b>: Das Setzen der Datenbank auf <code>:memory:</code> erzeugt eine flüchtige (nicht-persistente) Datenbank im Speicher."
         }
     }
 }

@@ -34,11 +34,11 @@
         "alreadyuse": "bereits im Gebrauch",
         "alreadyset": "bereits festgelegt als",
         "tip": {
-            "pin": "<b>Verwendete Pins:</b> ",
-            "in": "<b>Tipp:</b> Es werden nur die digitale Eingänge unterstützt. Der Eingang muss 0 oder 1 sein",
-            "dig": "<b>Tipp:</b> Für den digitalen Ausgang muss der Node-Eingangswert 0 oder 1 sein",
-            "pwm": "<b>Tipp:</b> Für die PWM-Ausgabe muss der Node-Eingangswert zwischen 0 und 100 liegen. Hohen Frequenzen können die CPU mehr beanspruchen als erwartet.",
-            "ser": "<b>Tipp:</b> Für die Servo-Ausgabe muss der Node-Eingangswert zwischen 0 und 100 eingegeben werden. 50 ist die Mitte."
+            "pin": "<b>Verwendete Pins</b>: ",
+            "in": "<b>Tipp</b>: Es werden nur die digitale Eingänge unterstützt. Der Eingang muss 0 oder 1 sein",
+            "dig": "<b>Tipp</b>: Für den digitalen Ausgang muss der Node-Eingangswert 0 oder 1 sein",
+            "pwm": "<b>Tipp</b>: Für die PWM-Ausgabe muss der Node-Eingangswert zwischen 0 und 100 liegen. Hohen Frequenzen können die CPU mehr beanspruchen als erwartet.",
+            "ser": "<b>Tipp</b>: Für die Servo-Ausgabe muss der Node-Eingangswert zwischen 0 und 100 eingegeben werden. 50 ist die Mitte."
         },
         "types": {
             "digout": "Digitaler Ausgang",
@@ -68,7 +68,7 @@
             "mustbeexecutable": "nrgpio muss ausführbar sein",
             "commandnotfound": "nrgpio-Befehl nicht gefunden",
             "commandnotexecutable": "nrgpio-Befehl nicht ausführbar",
-            "error": "Fehler: __error__",
+            "error": "FEHLER: __error__",
             "pythoncommandnotfound": "nrgpio-Python-Befehl nicht aktiv"
         }
     }

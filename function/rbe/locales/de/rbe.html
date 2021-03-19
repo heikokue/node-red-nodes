@@ -23,7 +23,7 @@
     </dl>
     <h3>Details</h3>
     <p>In RBE mode this node will block until the <code>msg.payload</code>,
-    (or selected property) value is different to the previous one. If required 
+    (or selected property) value is different to the previous one. If required
     it can ignore the intial value, so as not to send anything at start.</p>
     <p>In the Deadband modes the incoming value must contain a parseable number and will block
     unless the change is greater than + or - the band gap away from a previous value.</p>
@@ -33,6 +33,6 @@
     <p>Both Deadband and Narrowband allow comparison against either the previous valid output value, thus
     ignoring any values out of range; or the previous input value, which resets the set point, thus allowing
     gradual drift (deadband), or a step change (narrowband).</p>
-    <p><b>Note:</b> This works on a per <code>msg.topic</code> basis. This means that a single rbe node can
+    <p><b>Note</b>: This works on a per <code>msg.topic</code> basis. This means that a single rbe node can
     handle multiple different topics at the same time.</p>
 </script>
