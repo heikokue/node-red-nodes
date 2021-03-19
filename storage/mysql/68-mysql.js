@@ -19,9 +19,8 @@ module.exports = function(RED) {
         var node = this;
 
         function checkVer() {
-            node.connection.query("SELECT version();", [], function(err, rows) {
+            node.pool.query("SELECT version();", [], function(err, rows, fields) {
                 if (err) {
-                    node.connection.release();
                     node.error(err);
                     node.status({fill:"red",shape:"ring",text:"Bad Ping"});
                     doConnect();
@@ -42,7 +41,9 @@ module.exports = function(RED) {
                     timezone : node.tz,
                     insecureAuth: true,
                     multipleStatements: true,
-                    connectionLimit: 25,
+                    connectionLimit: 50,
+                    timeout: 30000,
+                    connectTimeout: 30000,
                     charset: node.charset
                 });
             }
@@ -84,13 +85,13 @@ module.exports = function(RED) {
             }
         }
 
-        this.on('close', function (done) {
+        this.on('close', function(done) {
             if (this.tick) { clearTimeout(this.tick); }
             if (this.check) { clearInterval(this.check); }
             node.connected = false;
-            node.connection.release();
+            // node.connection.release();
             node.emit("state"," ");
-            node.pool.end(function (err) { done(); });
+            node.pool.end(function(err) { done(); });
         });
     }
     RED.nodes.registerType("MySQLdatabase",MySQLNode, {
@@ -129,18 +130,18 @@ module.exports = function(RED) {
                         var bind = [];
                         if (Array.isArray(msg.payload)) { bind = msg.payload; }
                         else if (typeof msg.payload === 'object' && msg.payload !== null) {
-                            bind=msg.payload;
-                            node.mydbConfig.connection.config.queryFormat = function (query, values) {
-                                if (!values){
+                            bind = msg.payload;
+                            node.mydbConfig.connection.config.queryFormat = function(query, values) {
+                                if (!values) {
                                     return query;
                                 }
-                                return query.replace(/\:(\w+)/g, function (txt, key) {
+                                return query.replace(/\:(\w+)/g, function(txt, key) {
                                     if (values.hasOwnProperty(key)) {
                                         return this.escape(values[key]);
                                     }
                                     return txt;
                                 }.bind(this));
-                            };          
+                            };
                         }
                         node.mydbConfig.connection.query(msg.topic, bind, function(err, rows) {
                             if (err) {
@@ -149,7 +150,7 @@ module.exports = function(RED) {
                                 node.error(err,msg);
                             }
                             else {
-                                if (rows.constructor.name === "OkPacket") {
+                                if ((rows.constructor.name === "OkPacket") || (rows.constructor.name === "Array")) {
                                     msg.payload = JSON.parse(JSON.stringify(rows));
                                 }
                                 else { msg.payload = rows; }
@@ -157,6 +158,9 @@ module.exports = function(RED) {
                                 status = {fill:"green",shape:"dot",text:"OK"};
                                 node.status(status);
                             }
+                            // if (node.mydbConfig.pool._freeConnections.indexOf(node.mydbConfig.connection) === -1) {
+                            //     node.mydbConfig.connection.release();
+                            // }
                         });
                     }
                     else {
@@ -174,7 +178,7 @@ module.exports = function(RED) {
                 }
             });
 
-            node.on('close', function () {
+            node.on('close', function() {
                 if (node.tout) { clearTimeout(node.tout); }
                 node.mydbConfig.removeAllListeners();
                 node.status({});
