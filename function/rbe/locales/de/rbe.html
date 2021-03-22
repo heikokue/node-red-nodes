@@ -1,38 +1,38 @@
 <script type="text/html" data-help-name="rbe">
-    <p>Report by Exception node - only passes on data if the payload has changed.</p>
-    <p>It can also block unless, or ignore if the value changes by a specified amount.</p>
-    <h3>Inputs</h3>
+    <p>Report by Exception (RBE) - Daten-Weiterleitung nur bei Änderung der Nutzdaten (Payload).
+       Der Node kann auch blockieren oder weiterleiten, wenn die Wertänderung eine Grenze überschreitet.</p>
+    <h3>Eingangsdaten</h3>
     <dl class="message-properties">
         <dt>payload
             <span class="property-type">number | string | (object)</span>
         </dt>
-        <dd>RBE mode will accept numbers, strings, and simple objects. Other modes must provide a parseable number.</dd>
+        <dd>Der einfache RBE-Modus mit Prüfung auf Wertänderung akzeptiert Zahlen (numbers), Zeichenfolgen (string) und einfache Objekte (object).
+            Bei den anderen wertvergleichenden Modies müssen analysierbare (parseable) Zahlenwerte übergeben werden.</dd>
         <dt class="optional">topic <span class="property-type">string</span>
         </dt>
-        <dd>if specified the function will work on a per topic basis.</dd>
+        <dd>Wenn vorgegeben erfolgt die Auswertung separat für jedes Topic</dd>
         <dt class="optional">reset<span class="property-type">any</span></dt>
-        <dd>if set clears the stored value for the specified msg.topic, or
-        all topics if msg.topic is not specified.</dd>
+        <dd>Wenn gesetzt wird/werden der/die gespeicherte(n) Wert(e) rückgesetzt</dd>
     </dl>
-    <h3>Outputs</h3>
+    <h3>Ausgangsdaten</h3>
     <dl class="message-properties">
         <dt>payload
-            <span class="property-type">as per input</span>
+            <span class="property-type">wie Eingangsdaten</span>
         </dt>
-        <dd>If triggered the output will be the same as the input.</dd>
+        <dd>Wenn Bedingung erfüllt, sind die Ausgangsdaten gleich den Eingangsdaten</dd>
     </dl>
     <h3>Details</h3>
-    <p>In RBE mode this node will block until the <code>msg.payload</code>,
-    (or selected property) value is different to the previous one. If required
-    it can ignore the intial value, so as not to send anything at start.</p>
-    <p>In the Deadband modes the incoming value must contain a parseable number and will block
-    unless the change is greater than + or - the band gap away from a previous value.</p>
-    <p>Deadband also supports % - only sends if the input differs by more than x% of the original value.</p>
+    <p>Im einfachen RBE-Modus mit Prüfung auf Wertänderung blockiert dieser Node die Datenweitergabe bis
+       <code>msg.payload</code> (oder die eingestellte Eigenschaft) verändert ist gegenüber dessen vorheriger Wert.
+       Wenn benötigt, wird der Anfangswert ignoriert, sodass beim Start nichts gesendet wird.</p>
+    <p>Bei den wertvergleichenden <i>Totband</i>-Modies müssen die Eingangswerte analysierbare (parseable) Zahlenwerte sein und
+       sie werden geblockt, bis die Wertänderung größer ist als + oder - der Bandlücke bezogen auf den voherigen Wert.</p>
     <p>The Narrowband modes will block if the incoming value change is greater than + or - the band gap
     away from the previous value. Useful for ignoring outliers from a faulty sensor for example.</p>
+    <p>Die Tot- und Nahband-Modes unterstützt auch % - der Node sendet nur, wenn der Eingangswert mehr als x% vom vorherigen Wert abweicht.</p>
     <p>Both Deadband and Narrowband allow comparison against either the previous valid output value, thus
     ignoring any values out of range; or the previous input value, which resets the set point, thus allowing
     gradual drift (deadband), or a step change (narrowband).</p>
-    <p><b>Note</b>: This works on a per <code>msg.topic</code> basis. This means that a single rbe node can
+    <p><b>Hinweis</b>: This works on a per <code>msg.topic</code> basis. This means that a single rbe node can
     handle multiple different topics at the same time.</p>
 </script>
