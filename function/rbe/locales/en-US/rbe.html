@@ -27,12 +27,12 @@
        (or selected property) value is different to the previous one.
        If required it can ignore the intial value, so as not to send anything at start.</p>
     <p>The <a href="https://en.wikipedia.org/wiki/Deadband" target="_blank">Deadband</a> modes will block the incoming value 
-       <i>unless</i> its change is greater than + or - the band gap away from a previous value.</p>
+       <i>unless</i> its change is greater or greater-equal than &plusmn; the band gap away from a previous value.</p>
     <p>The Narrowband modes will block the incoming value,
-       <i>if</i> its change is greater than + or - the band gap away from the previous value.
+       <i>if</i> its change is greater or greater-equal than &plusmn; the band gap away from the previous value.
        It is useful for ignoring outliers from a faulty sensor for example.</p>
-    <p>Both Deadband and Narrowband also supports % -
-       only sends if/unless the input differs by more than x% of the original value.</p>
+    <p>Both in Deadband and Narrowband modes the incoming value must contain a parseable number and
+       both also supports % - only sends if/unless the input differs by more than x% of the original value.</p>
     <p>Both Deadband and Narrowband allow comparison against either the previous valid output value, thus
     ignoring any values out of range, or the previous input value, which resets the set point, thus allowing
     gradual drift (deadband), or a step change (narrowband).</p>
