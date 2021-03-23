@@ -1,18 +1,22 @@
 
 <script type="text/html" data-help-name="arduino in">
-    <h1>Test</h1>
-    <p>Arduino input node. Connects to a local Arduino and monitors the selected pin for changes. Uses <a href="http://firmata.org/" target="_new"><i>Firmata</i>.</a></p>
-    <p>The Arduino must be loaded with the Standard Firmata sketch available in the Arduino examples.</p>
-    <p>You can select either Digital or Analogue input. Outputs the value read as <code>msg.payload</code> and the pin number as <code>msg.topic</code>.</p>
-    <p>It only outputs on a change of value - fine for digital inputs, but you can get a lot of data from analogue pins which you must then handle.</p>
-    <p>For example you could use a <code>delay</code> node set to rate limit and drop intermediate values, or an <code>rbe</code> node to only report when it changes by a certain amount.</p>
+    <p>Arduino Eingangs-Node.
+       Verbindung mit lokalen Arduino und Überwachung des ausgewählten Pins auf Änderungen.
+       Verwendet <a href="http://firmata.org/" target="_new"><i>Firmata</i>.</a>.</p>
+    <p>Der Arduino muss mit dem Standard-Firmata-Sketch geladen werden, das in den Arduino-Beispielen verfügbar ist.</p>
+    <p>Digitale oder Analoge Eingänge sind auswählbar.
+       Der gelesene Wert wird als <code>msg.payload</code> und die Pinnummer als <code>msg.topic</code> ausgegeben.</p>
+    <p>Die Ausgabe erfolgt nur bei einer Wertänderung - gut für digitale Eingänge, aber es können viele Daten von einem analogen Pin erhalten werden, die entsprechend behandelt werden müssen.</p>
+    <p>Zum Beispiel können mit einem <span style="background-color:Gainsboro">delay</span>-Node die Rate begrenzt und Zwischenwerte herausgenommen werden.
+       Oder mit dem <span style="background-color:Gainsboro">rbe</span>-Node können nur Werte durchgelassen werden, die um einen Mindestbetrag abweichen (z.B. zur Rauschfilterung).</p>
 </script>
 
 <script type="text/html" data-help-name="arduino out">
-    <h1>Test</h1>
-    <p>Arduino output node. Connects to local Arduino and writes to the selected digital
-    pin. Uses <a href="http://firmata.org/" target="_new"><i>Firmata</i>.</a></p>
-    <p>The Arduino must be loaded with the Standard Firmata sketch available in the Arduino examples.</p>
-    <p>You can select Digital, Analogue (PWM) or Servo type outputs. Expects an integer numeric
-    value in <code>msg.payload</code>. The pin number is set in the properties panel.</p>
+    <p>Arduino Ausgangs-Node.
+       Verbindung mit lokalen Arduino und Beschreiben des ausgewählten Pins.
+       Verwendet <a href="http://firmata.org/" target="_new"><i>Firmata</i>.</a>.</p>
+    <p>Der Arduino muss mit dem Standard-Firmata-Sketch geladen werden, das in den Arduino-Beispielen verfügbar ist.</p>
+    <p>Es können Digital-, Analog- (PWM) oder Servo-Ausgangstypen ausgewählt werden.
+       Es wird ein Ganzzahlwert (integer) in <code>msg.payload</code> erwartet.
+       Die Pinnummer wird in der Eigenschaftenmaske vorgegeben.</p>
 </script>
